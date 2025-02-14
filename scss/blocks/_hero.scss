@@ -171,28 +171,51 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  translate: 40% 45%;
+  translate: 40% 42%;
   z-index: 11;
-  animation: ballBouncing 1.2s ease-in infinite;
+  animation: bounce 1s linear infinite;
 }
 
-@keyframes ballBouncing {
+@keyframes bounce {
   0%,
   100% {
-    transform: scale(1.3, 0.5);
+    transform: scale(1.3, 0.7);
   }
   20% {
     transform: scaleY(1.1);
   }
   40%,
   80% {
-    transform: translateY(-16rem);
+    transform: translateY(-18rem);
   }
   70% {
-    transform: translateY(-18rem);
+    transform: translateY(-20rem);
   }
   90% {
     transform: translateY(0);
+  }
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(0);
+    translate: 40% 42%;
+    scale: 1;
+  }
+  5% {
+    rotate: 0deg;
+    scale: 1;
+  }
+  50% {
+    translate: -110% -35%;
+    z-index: 11;
+  }
+
+  100% {
+    z-index: -2;
+    translate: -190% -70%;
+    scale: 0.01;
+    rotate: -2100deg;
   }
 }
 

@@ -72,20 +72,30 @@
   display: flex;
   gap: 10px;
   transition: transform 0.5s ease-in-out;
+  cursor: grab;
   li {
     flex-shrink: 0;
     position: relative;
+    user-select: none;
 
     button {
+      @include flex-center;
+      width: 80px;
+      height: 80px;
+
       position: absolute;
       bottom: 20px;
       right: 30px;
 
       &:hover {
-        scale: 2;
+        scale: 1.5;
       }
     }
   }
+}
+
+.portfolio__list.grabbing {
+  cursor: grabbing;
 }
 
 .gallery-image:hover {

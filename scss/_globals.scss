@@ -6,6 +6,12 @@ html {
   }
 }
 
+// *,
+// *::before,
+// *::after {
+//   outline: 2px solid green;
+// }
+
 body {
   @include fluid-text(14, 18);
   display: flex;
