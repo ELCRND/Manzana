@@ -1,0 +1,16 @@
+@use "normalize";
+@use "fonts";
+@use "variables";
+@use "utils";
+@use "globals";
+
+@use "./blocks/header";
+
+@use "./blocks/hero";
+@use "./blocks/partners";
+@use "./blocks/services";
+@use "./blocks/principles";
+@use "./blocks/integration";
+@use "./blocks/tools";
+@use "./blocks/portfolio";
+@use "./blocks/realization-stage-6";

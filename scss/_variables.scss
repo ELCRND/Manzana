@@ -1,0 +1,24 @@
+@use "helpers" as *;
+
+:root {
+  --color-white: #ffffff;
+  --color-black: #171717;
+  --color-accent: #78be20;
+  --color-pink: #fe3f44;
+  --color-yellow: #ffc700;
+
+  --font-family: "TT Norms", sans-serif;
+
+  --border-r-s: 10px;
+  --border-r-m: 20px;
+  --border-r-l: 30px;
+
+  --container-width: #{rem(1400)};
+  --container-padding-x: #{rem(20)};
+
+  --transition-duration: 0.2s;
+
+  @include laptop {
+    --container-width: #{rem(1280)};
+  }
+}

@@ -1,0 +1,126 @@
+@use "../helpers/" as *;
+
+.services {
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.services__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(412px, 1fr));
+  gap: 50px;
+
+  li {
+    &:nth-of-type(2) {
+      .service:hover {
+        .service__title {
+          color: var(--color-white);
+          path {
+            stroke: var(--color-white);
+          }
+        }
+
+        .service__link {
+          color: var(--color-white);
+
+          &::before {
+            background-color: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+}
+
+.service {
+  min-height: 315px;
+  padding: 40px 0 45px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  &:hover {
+    .service__link {
+      color: var(--color-black);
+    }
+
+    #paint0_linear_1046_20-1 {
+      stop {
+        &:nth-of-type(1) {
+          stop-color: #78be20;
+        }
+        &:nth-of-type(2) {
+          stop-color: #ffbf3f;
+        }
+      }
+    }
+
+    #paint0_linear_1046_13-2 {
+      stop {
+        &:nth-of-type(1) {
+          stop-color: #fe3f44;
+        }
+        &:nth-of-type(2) {
+          stop-color: #ffc701;
+        }
+      }
+    }
+
+    #paint0_linear_1046_6-3 {
+      stop {
+        &:nth-of-type(1) {
+          stop-color: #ffbf3f;
+        }
+        &:nth-of-type(2) {
+          stop-color: #ffbf3f;
+        }
+        &:nth-of-type(3) {
+          stop-color: #fe3f44;
+        }
+      }
+    }
+  }
+}
+
+.service__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.service__title {
+  display: flex;
+  align-items: start;
+  gap: 32px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 133%;
+  color: #000;
+
+  span {
+    max-width: 268px;
+  }
+}
+
+.service__link {
+  @include fluid-text(18, 20);
+  width: fit-content;
+  font-weight: 400;
+  line-height: 136%;
+  text-align: center;
+  color: var(--color-black);
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 110%;
+    height: 1px;
+    background-color: var(--color-black);
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+  }
+}

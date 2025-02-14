@@ -1,0 +1,51 @@
+@use "../helpers/" as *;
+
+.header {
+  width: 100%;
+  position: absolute;
+  top: 38px;
+  z-index: 50;
+}
+
+.header__container {
+  padding: rem(24) rem(90);
+  border-radius: var(--border-r-s);
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-navigation__list {
+  display: flex;
+  gap: 44px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  text-transform: capitalize;
+  color: var(--color-black);
+
+  .header-navigation__link {
+    &:active {
+      color: var(--color-black);
+    }
+  }
+}
+
+.header__btn {
+  padding: rem(11) rem(43);
+  border-radius: 50px;
+  background-color: var(--color-pink);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 94%;
+  text-align: center;
+  color: var(--color-white);
+
+  &:hover {
+    opacity: 0.85;
+  }
+  &:active {
+    opacity: 1;
+  }
+}
