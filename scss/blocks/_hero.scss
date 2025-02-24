@@ -1,30 +1,43 @@
 @use "../helpers/" as *;
 
 .hero {
-  padding-top: 206px;
-  padding-bottom: 38px;
+  padding-top: 204px;
+  padding-bottom: 322px;
+  overflow: hidden;
+
+  @include tablet {
+    padding-top: 104px;
+    padding-bottom: 156px;
+    position: relative;
+  }
 }
 
 .hero__container {
   position: relative;
+
+  @include tablet {
+    position: static;
+  }
 }
 
 .hero__title {
   @include fluid-text(35, 78);
-  max-width: 664px;
+  max-width: fluid(355, 664);
   margin-bottom: 26px;
   font-weight: 700;
-  font-size: 78px;
   line-height: 90%;
+  position: relative;
+  z-index: 2;
 }
 
 .hero__description {
   @include fluid-text(14, 25);
-  max-width: 522px;
-  margin-bottom: 68px;
+  max-width: fluid(335, 522);
+  margin-bottom: fluid(20, 68);
   font-weight: 700;
-  font-size: 25px;
   line-height: 132%;
+  position: relative;
+  z-index: 2;
 }
 
 .hero__btn-wrapper {
@@ -39,14 +52,36 @@
   border: 1px solid var(--color-white);
   user-select: none;
 
+  @include tablet {
+    margin-bottom: 346px;
+    left: 88px;
+  }
+
+  @include hover {
+    &::before {
+      box-shadow: 0 0 12px rgb(58, 58, 58) inset;
+    }
+
+    div:nth-of-type(3) {
+      &:before {
+        background-color: var(--color-yellow);
+      }
+
+      &::after {
+        border-color: var(--color-yellow);
+      }
+    }
+  }
+
   &::before {
     content: "";
     @include abs-center;
-    width: 72px;
-    height: 72px;
+    width: fluid(50, 72);
+    height: fluid(50, 72);
     border-radius: 100%;
     background-color: var(--color-pink);
     z-index: 20;
+    transition: var(--transition-duration);
   }
 
   img {
@@ -76,6 +111,8 @@
       display: block;
       translate: -70% 0;
       z-index: -2;
+      filter: blur(3px);
+      opacity: 0.88;
     }
     &:nth-of-type(3) {
       @include abs-center;
@@ -88,6 +125,7 @@
         height: 3px;
         background-color: var(--color-white);
         rotate: -45deg;
+        transition: var(--transition-duration);
       }
 
       &::after {
@@ -99,6 +137,7 @@
         border-left: 3px solid var(--color-white);
         rotate: 90deg;
         translate: -40% -60%;
+        transition: var(--transition-duration);
       }
     }
   }
@@ -113,6 +152,10 @@
   transform-origin: 0% 80%;
   z-index: 12;
   user-select: none;
+
+  @include tablet {
+    left: 160px;
+  }
 }
 
 @keyframes arrow-move {
@@ -136,19 +179,32 @@
   right: 0;
   bottom: 0;
   user-select: none;
+
+  @include tablet {
+    right: auto;
+    left: 0;
+    bottom: 156px;
+  }
 }
 
 .hero-scene__circle {
   position: absolute;
   right: -200px;
   bottom: -243px;
-  z-index: -2;
-  width: 708px;
-  height: 708px;
+  z-index: -3;
+  width: fluid(480, 708);
+  height: fluid(480, 708);
   background-color: #78be20;
   border-radius: 50%;
   opacity: 0.4;
   filter: blur(90px);
+
+  @include tablet {
+    bottom: -100px;
+    right: auto;
+    left: 0;
+    translate: -30% 0;
+  }
 }
 
 .hero-scene__gate {
@@ -157,6 +213,10 @@
   mix-blend-mode: lighten;
   translate: 0 20%;
   z-index: 2;
+
+  @include tablet {
+    translate: -10% 8%;
+  }
 }
 
 .hero-scene__puck {
@@ -165,13 +225,17 @@
   left: 0;
   translate: 50% 35%;
   z-index: 11;
+
+  @include tablet {
+    translate: 40% 30%;
+  }
 }
 
 .hero-scene__ball {
   position: absolute;
   bottom: 0;
   right: 0;
-  translate: 40% 42%;
+  translate: 0 42%;
   z-index: 11;
   animation: bounce 1s linear infinite;
 }
@@ -199,14 +263,23 @@
 @keyframes fly {
   0% {
     transform: translateY(0);
-    translate: 40% 42%;
+    translate: 0 42%;
     scale: 1;
   }
   5% {
     rotate: 0deg;
     scale: 1;
   }
-  50% {
+  19% {
+    z-index: 11;
+  }
+  20% {
+    z-index: 1;
+  }
+  59% {
+    z-index: 1;
+  }
+  60% {
     translate: -110% -35%;
     z-index: 11;
   }

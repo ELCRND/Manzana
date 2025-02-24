@@ -1,0 +1,43 @@
+@use "../helpers/" as *;
+
+.about {
+  padding-top: 50px;
+}
+
+.about__title {
+  @include fluid-text(30, 75);
+  margin-bottom: 30px;
+  font-weight: 500;
+  line-height: 107%;
+  color: var(--color-white);
+}
+
+.about__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+
+  li {
+    @include mobile {
+      min-height: auto;
+    }
+    min-height: 300px;
+    padding: fluid(28, 40) fluid(22, 30);
+    border-radius: var(--border-r-m);
+    background-color: var(--color-grey);
+
+    p {
+      @include fluid-text(16, 20);
+      margin-top: 20px;
+      font-weight: 400;
+      line-height: 135%;
+      letter-spacing: -0.03em;
+      color: var(--color-white);
+
+      strong {
+        @include fluid-text(18, 25);
+        font-weight: 800;
+      }
+    }
+  }
+}

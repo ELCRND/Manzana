@@ -1,17 +1,26 @@
 @use "../helpers/" as *;
 
 .partners {
+  translate: 0 -100%;
   padding-top: 40px;
   padding-bottom: 58px;
   border-radius: var(--border-r-s);
   background-color: var(--color-white);
   position: relative;
   z-index: 10;
+
+  @include tablet {
+    padding: 20px;
+
+    .partners-marquee__item img {
+      scale: 0.5;
+    }
+  }
 }
 
 .partners__title {
   @include fluid-text(20, 30);
-  margin-bottom: 40px;
+  margin-bottom: fluid-text(24, 40);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +29,11 @@
   line-height: 133%;
   text-align: center;
   color: var(--color-black);
+  text-wrap: nowrap;
+
+  @include tablet {
+    gap: 12px;
+  }
 
   &::before,
   &::after {
@@ -51,6 +65,11 @@
   --marquee-item-height: 111px;
   --marquee-duration: 26s;
   --marquee-items: 12;
+
+  @include tablet {
+    --marquee-item-width: 128px;
+    --marquee-item-height: 88px;
+  }
 
   @for $i from 1 through 12 {
     .partners-marquee__item:nth-of-type(#{$i}) {

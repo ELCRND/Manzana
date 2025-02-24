@@ -1,6 +1,11 @@
 @use "../helpers/" as *;
 
 .header {
+  @include tablet {
+    top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   width: 100%;
   position: absolute;
   top: 38px;
@@ -8,12 +13,54 @@
 }
 
 .header__container {
-  padding: rem(24) rem(90);
+  padding: fluid(16, 24) fluid(10, 90);
   border-radius: var(--border-r-s);
   background-color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.header-navigation {
+  @include tablet {
+    display: none;
+  }
+}
+
+.header-navigation.open {
+  @include tablet {
+    width: 100%;
+    height: 100vh;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: block;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    z-index: 51;
+    background: linear-gradient(145deg, #ffc701 0%, #fe3f44 100%);
+    animation: burger-menu 120ms linear;
+
+    .header-navigation__list {
+      display: grid;
+      place-content: center;
+      text-align: center;
+      color: var(--color-white);
+      font-size: 32px;
+    }
+
+    & + .header__btn {
+      display: block;
+      position: absolute;
+      top: 10vh;
+      left: 50%;
+      translate: -50% 0;
+      z-index: 52;
+      opacity: 1;
+    }
+  }
 }
 
 .header-navigation__list {
@@ -33,6 +80,9 @@
 }
 
 .header__btn {
+  @include tablet {
+    display: none;
+  }
   padding: rem(11) rem(43);
   border-radius: 50px;
   background-color: var(--color-pink);
@@ -41,11 +91,73 @@
   line-height: 94%;
   text-align: center;
   color: var(--color-white);
+  text-wrap: nowrap;
 
   &:hover {
     opacity: 0.85;
   }
   &:active {
     opacity: 1;
+  }
+}
+
+.header__open {
+  @include tablet {
+    display: flex;
+  }
+  width: 25px;
+  height: 20px;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    border-radius: var(--border-r-s);
+    transition: var(--transition-duration);
+  }
+}
+
+.header__open.open {
+  position: absolute;
+  z-index: 52;
+  top: 42px;
+  right: 30px;
+  @include mobile-s {
+    top: 30px;
+  }
+
+  span {
+    background-color: var(--color-white);
+    &:nth-of-type(1) {
+      rotate: 45deg;
+    }
+    &:nth-of-type(2) {
+      display: none;
+    }
+    &:nth-of-type(3) {
+      rotate: -45deg;
+      translate: 0 -18px;
+    }
+  }
+}
+
+@keyframes burger-menu {
+  from {
+    translate: 0 -100%;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+
+.header__logo {
+  img {
+    width: fluid(168, 328);
+    height: fluid(28, 54);
   }
 }

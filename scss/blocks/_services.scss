@@ -1,18 +1,26 @@
 @use "../helpers/" as *;
 
 .services {
-  padding-top: 40px;
-  padding-bottom: 30px;
+  margin-top: -200px;
+
+  @include tablet {
+    margin-top: -120px;
+  }
 }
 
-.services__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(412px, 1fr));
-  gap: 50px;
+.services__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
 
-  li {
+  @include tablet {
+    gap: 20px;
+  }
+
+  .service {
     &:nth-of-type(2) {
-      .service:hover {
+      &:hover {
         .service__title {
           color: var(--color-white);
           path {
@@ -33,12 +41,18 @@
 }
 
 .service {
-  min-height: 315px;
-  padding: 40px 0 45px 26px;
+  width: fluid(335, 445);
+  height: fluid(179, 315);
+  padding: fluid(16, 40) fluid(16, 24);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+
+  @include tablet {
+    background-color: var(--color-white);
+    border-radius: 16px;
+  }
 
   &:hover {
     .service__link {
@@ -84,21 +98,36 @@
 }
 
 .service__bg {
+  width: fluid(335, 445);
+  height: fluid(179, 315);
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+
+  @include tablet {
+    display: none;
+  }
 }
 
 .service__title {
+  @include fluid-text(18, 30);
   display: flex;
   align-items: start;
   gap: 32px;
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 30px;
   line-height: 133%;
   color: #000;
+
+  @include tablet {
+    flex-direction: column;
+    gap: 14px;
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
 
   span {
     max-width: 268px;
@@ -122,5 +151,10 @@
     position: absolute;
     bottom: -10px;
     left: 0;
+
+    @include tablet {
+      width: 100%;
+      bottom: 0;
+    }
   }
 }

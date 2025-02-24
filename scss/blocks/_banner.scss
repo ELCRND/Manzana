@@ -1,0 +1,118 @@
+@use "../helpers/" as *;
+
+.banner {
+  padding-top: 116px;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+}
+
+.banner__container {
+  padding-bottom: 76px;
+  position: relative;
+}
+
+.banner__logo {
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.banner__title {
+  @include fluid-text(25, 57);
+  max-width: 639px;
+  margin-bottom: 16px;
+  font-weight: 700;
+  line-height: 114%;
+  color: var(--color-white);
+  position: relative;
+  z-index: 1;
+}
+
+.banner__description {
+  @include fluid-text(15, 25);
+  max-width: 523px;
+  margin-bottom: 46px;
+  font-weight: 700;
+  line-height: 132%;
+  color: var(--color-white);
+  position: relative;
+  z-index: 1;
+}
+
+.banner__link {
+  padding: rem(16) rem(128);
+  border-radius: 73px;
+  background: var(--color-yellow);
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 118%;
+  color: var(--color-black);
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    color: var(--color-white);
+    background-color: var(--color-black);
+  }
+
+  &:active {
+    background: var(--color-yellow);
+    color: var(--color-black);
+  }
+}
+
+.banner__img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+
+  &:before {
+    content: "";
+    width: 692px;
+    height: 503px;
+    border-radius: 100%;
+    background-color: rgba(255, 199, 0, 0.66);
+    filter: blur(88px);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+  }
+}
+
+.banner__marquee {
+  width: 100%;
+  height: 80px;
+
+  background-color: var(--color-pink);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  > div {
+    display: flex;
+    gap: 20px;
+    padding-left: 50px;
+    animation: banner-marq 12s linear infinite;
+
+    span {
+      @include fluid-text(15, 25);
+      font-weight: 700;
+      line-height: 180%;
+      text-transform: uppercase;
+      color: var(--color-white);
+      text-wrap: nowrap;
+    }
+  }
+}
+
+@keyframes banner-marq {
+  to {
+    transform: translateX(-50%);
+  }
+}

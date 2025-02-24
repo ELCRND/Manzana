@@ -9,8 +9,16 @@
 @use "./blocks/hero";
 @use "./blocks/partners";
 @use "./blocks/services";
+@use "./blocks/about";
+@use "./blocks/strength";
+@use "./blocks/portfolio";
 @use "./blocks/principles";
 @use "./blocks/integration";
 @use "./blocks/tools";
-@use "./blocks/portfolio";
+@use "./blocks/interface";
+@use "./blocks/banner";
+@use "./blocks/coop";
+@use "./blocks/modal";
 @use "./blocks/realization-stage-6";
+
+@use "./blocks/footer";
