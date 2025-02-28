@@ -4,22 +4,31 @@
   padding-top: 56px;
   padding-bottom: 56px;
   background-color: var(--color-white);
+
+  @include tablet {
+    padding: 30px 20px;
+  }
 }
 
 .coop__container {
-  padding: 44px 60px;
+  padding: fluid(24, 44) fluid(12, 60);
   display: grid;
+  grid-template-columns: auto 1fr;
   border: 7px solid var(--color-accent);
   border-radius: var(--border-r-l);
   background: #000;
   position: relative;
-  overflow: hidden;
+
+  @include tablet {
+    grid-template-columns: auto;
+    justify-items: center;
+    gap: 20px;
+    border-width: 5px;
+  }
 }
 
 .coop__title {
   @include fluid-text(30, 57);
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
   max-width: 477px;
   font-family: var(--font-family);
   font-weight: 700;
@@ -27,17 +36,24 @@
   color: var(--color-white);
   position: relative;
   z-index: 1;
+
+  @include tablet {
+    text-align: center;
+  }
 }
 
 .coop__form {
-  grid-row: 1 / 2;
-  grid-column: 2 / 3;
   justify-self: end;
-  width: 655px;
+  width: 100%;
+  max-width: 655px;
   display: grid;
   gap: 12px;
   position: relative;
   z-index: 1;
+
+  @include tablet {
+    justify-self: center;
+  }
 
   input:not([type="checkbox"]) {
     @include fluid-text(15, 20);
@@ -45,6 +61,10 @@
     border: none;
     border-radius: var(--border-r-s);
     line-height: 125%;
+
+    @include tablet {
+      padding: 14px 10px;
+    }
   }
 
   input:not([type="checkbox"])::placeholder {
@@ -53,9 +73,13 @@
 
   textarea {
     @include fluid-text(15, 20);
-    min-height: 164px;
+    min-height: fluid(127, 164);
     padding: 20px;
     border-radius: var(--border-r-s);
+
+    @include tablet {
+      padding: 14px 10px;
+    }
   }
 
   label:has([type="checkbox"]) {
@@ -111,6 +135,10 @@
   line-height: 118%;
   color: var(--color-white);
 
+  @include tablet {
+    height: 48px;
+  }
+
   &:hover {
     opacity: 0.7;
   }
@@ -124,11 +152,12 @@
   bottom: 0;
   left: 0;
   z-index: 0;
+  overflow: hidden;
 
   &:before {
     content: "";
-    width: 700px;
-    height: 700px;
+    width: fluid(300, 700);
+    height: fluid(300, 700);
     background-color: rgba(255, 199, 0, 0.66);
     filter: blur(88px);
     position: absolute;

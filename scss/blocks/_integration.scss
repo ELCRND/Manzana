@@ -1,12 +1,12 @@
 @use "../helpers/" as *;
 
 .integration {
-  padding-top: 44px;
+  padding-top: fluid(30, 44);
 }
 
 .integration__title {
   @include fluid-text(30, 70);
-  margin-bottom: 30px;
+  margin-bottom: fluid(10, 30);
   font-weight: 400;
   line-height: 114%;
   color: var(--color-white);
@@ -15,23 +15,32 @@
 .integration__subtitle {
   @include fluid-text(15, 45);
   width: fit-content;
-  margin-bottom: 60px;
-  padding: 22px 28px 26px 28px;
+  margin-bottom: fluid(24, 60);
+  padding: fluid(6, 22) fluid(10, 28) fluid(6, 26) fluid(10, 28);
   border-radius: 100px;
   background-color: var(--color-yellow);
   font-weight: 400;
   line-height: 60%;
   letter-spacing: -0.03em;
   color: var(--color-black);
+
+  @include mobile-s {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .integration__list {
   display: grid;
   gap: 30px;
+
+  @include mobile {
+    gap: 16px;
+  }
 }
 
 .integration__item {
-  padding: 42px 50px 0 50px;
+  padding: fluid(20, 40) fluid(10, 88) 0 fluid(10, 88);
   border-radius: var(--border-r-m);
   background: rgba(217, 217, 217, 0.2);
 }
@@ -50,15 +59,16 @@
   }
 }
 .integration-accordion__details[open] + .integration-accordion__wrapper {
-  padding-bottom: 36px;
+  padding-bottom: fluid(20, 36);
   grid-template-rows: 1fr;
 }
 
 .integration-accordion__legend {
   padding-top: 26px;
-  padding-bottom: 42px;
+  padding-bottom: fluid(20, 40);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   list-style: none;
 
   span {
@@ -75,6 +85,11 @@
   border-radius: 100%;
   background-color: var(--color-accent);
   position: relative;
+
+  @include mobile {
+    width: 20px;
+    height: 20px;
+  }
 
   &::before,
   &::after {
@@ -103,15 +118,20 @@
   gap: 22px;
   overflow: hidden;
 
+  @include tablet {
+    flex-direction: column;
+  }
+
   p {
+    @include fluid-text(15, 19);
     grid-row: 1 / 2;
     grid-column: 1 / 2;
     max-width: 565px;
+    min-width: 300px;
     height: fit-content;
     padding: 23px 10px;
     border-radius: var(--border-r-s);
     background-color: #d9d9d9;
-    font-size: 19px;
     line-height: 130%;
     color: var(--color-black);
   }
@@ -122,6 +142,15 @@
     display: flex;
     align-items: center;
     gap: 26px;
+
+    @include mobile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include mobile-s {
+      flex-direction: column;
+    }
 
     li {
       display: grid;

@@ -1,14 +1,14 @@
 @use "../helpers/" as *;
 
 .tools {
-  padding-top: 100px;
-  padding-bottom: 15px;
+  padding-top: fluid(60, 100);
+
   position: relative;
 
   &::before {
     content: "";
     width: 100%;
-    height: 100%;
+    height: 100.1%;
     position: absolute;
     top: 0;
     left: 0;
@@ -19,11 +19,15 @@
 
 .tools__container {
   position: relative;
+  padding-bottom: 16px;
+  @include mobile {
+    padding-bottom: 96px;
+  }
 }
 
 .tools__title {
   @include fluid-text(30, 70);
-  margin-bottom: 62px;
+  margin-bottom: fluid(24, 60);
   line-height: 114%;
   color: var(--color-white);
 }
@@ -40,6 +44,14 @@
   top: 0;
   right: 20px;
   translate: 0 50%;
+  text-wrap: nowrap;
+
+  @include mobile {
+    top: auto;
+    bottom: 30px;
+    right: 50%;
+    translate: 50% 0;
+  }
 
   @include hover {
     opacity: 0.7;
@@ -51,12 +63,22 @@
 }
 
 .tools__item {
-  padding-bottom: 24px;
-  margin-bottom: 34px;
+  padding-bottom: fluid(16, 24);
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &:not(:last-of-type) {
+    margin-bottom: fluid(20, 34);
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: start;
+    gap: 0px;
+  }
 
   @for $i from 1 through 5 {
     &:nth-of-type(#{$i}) {
@@ -89,7 +111,7 @@
     color: var(--color-white);
 
     span:last-of-type {
-      font-size: 22px;
+      @include fluid-text(12, 22);
     }
   }
 
@@ -101,8 +123,14 @@
     align-items: end;
     justify-content: space-around;
 
+    @include mobile {
+      height: 65px;
+      justify-content: space-between;
+    }
+
     li {
       @include fluid-text(7, 18);
+
       width: 115px;
       display: grid;
       justify-items: center;
@@ -111,6 +139,16 @@
       line-height: 100%;
       color: var(--color-white);
       white-space: nowrap;
+
+      @include mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        img {
+          scale: 0.5;
+        }
+      }
 
       @for $i from 1 through 6 {
         &:nth-of-type(#{$i}) {
